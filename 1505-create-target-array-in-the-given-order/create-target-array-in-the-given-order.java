@@ -1,28 +1,14 @@
 class Solution {
     public int[] createTargetArray(int[] nums, int[] index) {
-        int[] arr = nums;
+        int[] target = new int[nums.length];
 
         for(int i = 0; i < nums.length; i++){
-            arr = insertAtSpecificPosition(arr, nums[i], index[i]);
-        }
-
-        return arr;
-    }
-
-    static int[] insertAtSpecificPosition(int[] arr, int num, int index){
-        int[] newArr = new int[arr.length];
-        
-        for(int i = 0; i < arr.length; i++){
-            if(i < index){
-                newArr[i] = arr[i];
-            }else if(i == index){
-                newArr[i] = num;
-            }else{
-                newArr[i] = arr[i-1];
+            // Inserting at previous position
+            for(int j = i; j > index[i]; j--){
+                target[j] = target[j-1];
             }
+            target[index[i]] = nums[i]; 
         }
-        System.out.println(Arrays.toString(newArr));
-
-        return newArr;
+        return target;
     }
 }
