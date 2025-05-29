@@ -1,7 +1,6 @@
 class Solution {
     public int oddCells(int m, int n, int[][] indices) {
         int[][] arr = new int[m][n];
-        System.out.println(Arrays.deepToString(arr));
 
         for(int[] indices_row:indices){
             int row = indices_row[0];
@@ -16,7 +15,7 @@ class Solution {
             }
             
         }
-        System.out.println(Arrays.deepToString(arr));
+
         int count = 0;
         for(int[] row:arr){
             for(int col:row){
