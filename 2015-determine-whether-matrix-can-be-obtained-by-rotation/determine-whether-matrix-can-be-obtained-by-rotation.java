@@ -29,7 +29,7 @@ class Solution {
                         arr[j][mat.length - 1 - i] = mat[i][j];
                     }
                 }
-                System.out.println(Arrays.deepToString(arr));
+
                 if(checkMatrix(arr, target)){
                     return true;
                 }
