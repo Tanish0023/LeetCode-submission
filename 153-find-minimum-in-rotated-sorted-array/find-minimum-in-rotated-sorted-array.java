@@ -6,14 +6,11 @@ class Solution {
 
         int ans = findPivot(nums);
 
-        if(ans != nums.length && ans != -1){
+        if(ans != nums.length){
             return nums[ans + 1];
-        }
-        if(ans == nums.length){
+        }else{
             return nums[0];
         }
-
-        return -1;
     }
 
     public int findPivot(int[] nums){
@@ -34,6 +31,6 @@ class Solution {
             }
         }
 
-        return start;
+        return -1;
     }
 }
