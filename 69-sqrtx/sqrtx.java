@@ -1,21 +1,26 @@
 class Solution {
     public int mySqrt(int x) {
-        if(x==0){
-            return 0;
-        }
-        if(x == 1){
-            return 1;
-        }
-        int low=1;int high=x/2;int result=0;
-        while(low<=high){
-            int mid=low+(high-low)/2;
-            if(mid<=x/mid){
-                result=mid;
-                low=mid+1;
-            }else{
-                high=mid-1;
+        if (x < 2) return x; // sqrt(0) = 0, sqrt(1) = 1
+
+        int left = 0, right = x;
+        int result = 0;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            // To avoid integer overflow, use long for mid * mid
+            long square = (long) mid * mid;
+
+            if (square == x) {
+                return mid;
+            } else if (square < x) {
+                result = mid; // this could be the floor of sqrt(x)
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
+
         return result;
     }
 }
