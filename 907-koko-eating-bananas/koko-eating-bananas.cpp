@@ -8,10 +8,10 @@ public:
             int mid = low + (high - low) / 2;
             long long temp = 0;
 
-            for(int i = 0; i < piles.size(); i++){
-                temp += (piles[i] + mid - 1) / mid;
+            for (int pile : piles) {
+                temp += (pile + mid - 1) / mid;
+                if (temp > h) break;
             }
-
             if(temp > h){
                 low = mid + 1;
             }else{
