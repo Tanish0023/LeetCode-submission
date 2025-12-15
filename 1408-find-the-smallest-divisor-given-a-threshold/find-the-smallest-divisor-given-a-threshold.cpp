@@ -1,9 +1,10 @@
 class Solution {
 public:
     bool fn(vector<int>& nums, int threshold, int mid){
-        int sum = 0;
+        long long sum = 0;
         for(int i:nums){
             sum += (i + mid - 1) / mid;
+            if (sum > threshold) return false;
         }
 
         return sum <= threshold;
@@ -11,12 +12,8 @@ public:
 
     int smallestDivisor(vector<int>& nums, int threshold) {
         int low = 1;
-        int high = INT_MIN;
-
-        for(int i: nums){
-            high = max(i, high);
-        }
-
+        int high = *max_element(nums.begin(), nums.end());
+        
         while(low <= high){
             int mid = low + (high - low) / 2;
 
