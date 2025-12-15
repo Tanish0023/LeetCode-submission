@@ -8,6 +8,7 @@ public:
                 temp++;
             }else{
                 count += temp / k;
+                if (count == m) return true;
                 temp = 0;
             }
 
@@ -20,8 +21,11 @@ public:
     int minDays(vector<int>& bloomDay, int m, int k) {
         if((long long)m * k > bloomDay.size()) return -1;
         
-        int low = *min_element(bloomDay.begin(), bloomDay.end());;
-        int high = *max_element(bloomDay.begin(), bloomDay.end());
+        int low = INT_MAX, high = INT_MIN;
+        for (int d : bloomDay) {
+            low = min(low, d);
+            high = max(high, d);
+        }
 
         while(low <= high){
             int mid = low + (high - low) / 2;
