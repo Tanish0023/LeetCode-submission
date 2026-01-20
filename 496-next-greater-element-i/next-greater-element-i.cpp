@@ -4,10 +4,7 @@ public:
         unordered_map<int,int> hp;
         stack<int> s;
 
-        int n1 = nums1.size();
-        int n2 = nums2.size();
-
-        for(int i = n2 - 1; i >= 0; i--){
+        for(int i = nums2.size() - 1; i >= 0; i--){
             int ele = nums2[i];
 
             while(!s.empty() && s.top() <= ele){
