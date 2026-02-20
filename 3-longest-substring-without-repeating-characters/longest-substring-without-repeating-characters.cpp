@@ -1,26 +1,18 @@
 class Solution {
 public:
-    bool inString(string &s, int l, int r){
-        // check if s[r] exists between l and r-1
-        for(int i = l; i < r; i++){
-            if(s[i] == s[r]) return true;
-        }
-        return false;
-    }
-
     int lengthOfLongestSubstring(string s) {
-        if(s.size() <= 1) return s.size();
+        unordered_set<char> st;
         
-        int maxLength = 0;
         int l = 0;
+        int maxLength = 0;
 
-        for(int r = 1; r < s.size(); r++){
-            
-            // If duplicate found, shrink window
-            while(inString(s, l, r)){
+        for(int r = 0; r < s.size(); r++){
+            while(st.count(s[r])){   // duplicate found
+                st.erase(s[l]);
                 l++;
             }
 
+            st.insert(s[r]);
             maxLength = max(maxLength, r - l + 1);
         }
 
